@@ -1,0 +1,3 @@
+# 開発用ドキュメントは公開しない(このリポジトリは Public のため)
+# docs/ は親リポジトリ claude-code-dev(Private)側でバックアップ管理する
+docs/
