@@ -1,3 +1,4 @@
-# 開発用ドキュメントは公開しない(このリポジトリは Public のため)
-# docs/ は親リポジトリ claude-code-dev(Private)側でバックアップ管理する
+# このリポジトリは Public。開発用ドキュメント(仕様書・監査レポート・引き継ぎメモ)は
+# 親リポジトリ claude-code-dev(Private)の docs-private/claude-setup-guide/ で管理している。
+# 万一このフォルダ内に docs/ を作っても公開されないよう、ガードとして除外しておく。
 docs/
