@@ -163,7 +163,7 @@ const imgMap = {
   'tabs': '7.jpg?v=3',
   'git-mac-check': '10.jpg',
   'code-local': '11.jpg?v=2',
-  'cowork-tab': '8.jpg?v=2',
+  'cowork-tab': '8.jpg?v=3',
   'cowork-proceed': '9.jpg?v=2',
   'install-win': 'install-win.jpg'
 };
@@ -235,10 +235,12 @@ function buildSteps(){
   /* 5: Cowork タブ */
   if(wantCowork){
     steps.push({badge:`STEP ${n++} ─ Cowork`,title:'おまかせ作業（Cowork）を使ってみよう',desc:'Claudeがあなたの代わりにタスクを自律的にこなしてくれる機能です。',content:`
-      <div class="instruction"><div class="instruction-num">1</div><h3>「ホーム」タブを開く</h3><p>アプリ左上の<strong>ホーム</strong>タブをクリックします。</p>${tabVis('ホーム')}
-      <div class="callout info"><span class="callout-icon">💡</span><div>以前は「Cowork」という専用タブがありましたが、アップデートで<strong>「ホーム」にまとまりました</strong>。やってほしい作業をそのまま書けば、Claudeが自分で進めてくれます。</div></div></div>
-      ${imgSlot('cowork-tab','Coworkタブを開いた画面')}
-      <div class="instruction"><div class="instruction-num">2</div><h3>自然言語でタスクを入力してみよう</h3><p>中央の入力欄に、やりたいことを日本語でそのまま入力します。例：</p><div class="code-block"><code>デスクトップにあるファイルを種類ごとにフォルダ分けしてください</code><button class="copy-btn" onclick="copyCode(this)">コピー</button></div></div>
+      <div class="instruction"><div class="instruction-num">1</div><h3>「ホーム」タブで Cowork に切り替える</h3><p>アプリ左上の<strong>ホーム</strong>タブを開きます。</p>${tabVis('ホーム')}
+      <p>中央の入力欄の<strong>すぐ下</strong>に「<strong>チャット</strong> / <strong>Cowork</strong>」の切り替えがあります。<strong>「Cowork」をクリック</strong>してください。</p>
+      <div class="callout info"><span class="callout-icon">💡</span><div>以前は「Cowork」という専用タブがありましたが、アップデートで<strong>「ホーム」の中の切り替えボタン</strong>に変わりました。<br>・<strong>チャット</strong>＝相談・質問に答えてもらう&nbsp;/&nbsp;・<strong>Cowork</strong>＝作業を代わりにやってもらう</div></div></div>
+      ${imgSlot('cowork-tab','ホーム画面でCoworkに切り替える')}
+      <div class="instruction"><div class="instruction-num">2</div><h3>自然言語でタスクを入力してみよう</h3><p>入力欄に、やりたいことを日本語でそのまま入力します。例：</p><div class="code-block"><code>デスクトップにあるファイルを種類ごとにフォルダ分けしてください</code><button class="copy-btn" onclick="copyCode(this)">コピー</button></div>
+      <p style="margin-top:8px;">入力欄の下にある「<strong>プロジェクトまたはフォルダー</strong>」から、作業させたい場所をあらかじめ指定しておくこともできます。</p></div>
       <div class="instruction"><div class="instruction-num">3</div><h3>フォルダへのアクセスを許可する</h3><p>Claudeがタスクを進める途中で、作業に必要なフォルダへのアクセス許可を求められます。内容を確認して「<strong>許可</strong>」をクリックすると作業が続行します。</p></div>
       ${imgSlot('cowork-proceed','フォルダアクセス許可の画面')}
       <div class="callout warn"><span class="callout-icon">⚠️</span><div>許可したフォルダのファイルをClaudeが読み書きできるようになります。不安な方はまず1つだけ許可して試してみてください。</div></div>
