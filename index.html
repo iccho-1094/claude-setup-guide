@@ -146,7 +146,7 @@ function selectTool(tool){selectedTool=tool;document.querySelectorAll('.tool-btn
 function updateStartBtn(){const btn=document.getElementById('startBtn');if(selectedOS&&selectedTool){btn.disabled=false;btn.textContent='セットアップを始める 🚀';}}
 
 function tabVis(hl){
-  const labels=['Chat','Cowork','Code'];
+  const labels=['ホーム','Code'];
   return '<div class="tab-visual">'+labels.map(l=>`<div class="tab-item${l===hl?' highlight':''}">${l}${l===hl?' ← ここ':''}</div>`).join('')+'</div>';
 }
 
@@ -160,7 +160,7 @@ const imgMap = {
   'code-example': 'code-example.jpg?v=3',
   'install-mac-drag': 'install-mac-drag.jpg',
   'login': '6.jpg?v=2',
-  'tabs': '7.jpg?v=2',
+  'tabs': '7.jpg?v=3',
   'git-mac-check': '10.jpg',
   'code-local': '11.jpg?v=2',
   'cowork-tab': '8.jpg?v=2',
@@ -199,14 +199,14 @@ function buildSteps(){
     <div class="instruction"><div class="instruction-num">1</div><h3>Claudeの公式サイトを開く</h3><p>PCのブラウザで以下のリンクを開いてください：</p><p><a href="https://claude.ai" target="_blank" rel="noopener">https://claude.ai を開く ↗</a></p></div>
     <div class="instruction"><div class="instruction-num">2</div><h3>アカウントを作成する</h3><p>画面の「Sign up」（サインアップ）をクリックします。</p><ul><li><strong>Googleアカウント</strong>で登録するのが最も簡単です</li><li>メールアドレスでの登録も可能です</li></ul></div>
     ${imgSlot('signup','claude.aiのサインアップ画面')}
-    <div class="instruction"><div class="instruction-num">3</div><h3>メール認証または電話番号での認証を完了する</h3><p>メールアドレスで登録した場合は確認メールが届きます。メール内のリンクをクリックして認証を完了してください。Googleアカウントで登録した場合は電話番号での認証（SMS）が求められることがあります。</p></div>
+    <div class="instruction"><div class="instruction-num">3</div><h3>認証を完了する</h3><p>メールアドレスで登録した場合は確認メールが届きます。メール内のリンクをクリックしてください。</p><p>続いて<strong>電話番号での認証（SMS）</strong>があります。Google登録・メール登録のどちらでも<strong>全員必須</strong>で、スキップはできません。携帯電話を手元に用意しておいてください。</p></div>
     <div class="callout info"><span class="callout-icon">💡</span><div>この時点ではまだ無料プランです。次のステップで有料プランに切り替えます。</div></div>`});
 
   /* 2: プラン */
   steps.push({badge:`STEP ${n++}`,title:'有料プランに加入する',desc:'CodeとCoworkを使うには有料プラン（最低Pro）が必要です。すでに加入済みの方は「次へ」で飛ばしてください。',content:`
     <div class="instruction"><div class="instruction-num">1</div><h3>プランページを開く</h3><p>ログインした状態で以下を開いてください：</p><p><a href="https://claude.ai/settings/billing" target="_blank" rel="noopener">プラン設定ページを開く ↗</a></p><p>または、画面左下の自分のアイコン →「Settings」→「Billing」からも行けます。</p></div>
     ${imgSlot('billing','Billing設定画面')}
-    <div class="instruction"><div class="instruction-num">2</div><h3>プランを選ぶ</h3><div class="plan-cards"><div class="plan-card recommended"><div><span class="plan-name">Pro</span><span class="plan-badge">おすすめ</span></div><span class="plan-price">月$22（約3,300円）</span></div><div class="plan-card"><div><span class="plan-name">Max</span></div><span class="plan-price">月$110〜（ヘビー向け）</span></div></div><p style="font-size:13px;color:var(--text-dim);margin-top:8px;">まずはProで十分です。使い込んで足りなくなったらMaxを検討しましょう。</p></div>
+    <div class="instruction"><div class="instruction-num">2</div><h3>プランを選ぶ</h3><div class="plan-cards"><div class="plan-card recommended"><div><span class="plan-name">Pro</span><span class="plan-badge">おすすめ</span></div><span class="plan-price">月$20（約3,000円）</span></div><div class="plan-card"><div><span class="plan-name">Max</span></div><span class="plan-price">月$100〜（ヘビー向け）</span></div></div><p style="font-size:13px;color:var(--text-dim);margin-top:8px;">まずはProで十分です。使い込んで足りなくなったらMaxを検討しましょう。</p></div>
     <div class="callout warn"><span class="callout-icon">⚠️</span><div><strong>「月間」を選択してください。</strong>契約更新も解除も柔軟にできるように、まずは月間契約で試してみることをおすすめします。</div></div>
     <div class="instruction"><div class="instruction-num">3</div><h3>支払い情報を入力</h3><p>クレジットカード情報を入力して「Subscribe」（購読する）をクリックします。</p></div>
     <div class="callout warn"><span class="callout-icon">⚠️</span><div><strong>無料プランではCodeもCoworkも使えません。</strong>必ずPro以上に加入してから次へ進んでください。</div></div>`});
@@ -223,18 +223,20 @@ function buildSteps(){
   /* 4: ログイン */
   steps.push({badge:`STEP ${n++}`,title:'アプリを起動してログイン',desc:'インストールしたアプリを開いて、Claudeアカウントでログインします。',content:`
     <div class="instruction"><div class="instruction-num">1</div><h3>アプリを起動する</h3>${W?'<p>Windowsキー（左下のロゴマーク）を押して「<strong>Claude</strong>」と検索 → 表示された「Claude」アプリをクリックします。</p>':'<p>Launchpad（ロケットのアイコン）を開くか、Finderの「アプリケーション」フォルダから「Claude」をダブルクリックします。</p>'}${W?'':imgDirect('4.jpg?v=2','LaunchpadからClaudeを探す')+imgDirect('5.jpg?v=2','検索窓で「Claude」と入力')}</div>
-    <div class="instruction"><div class="instruction-num">2</div><h3>ログインする</h3><p>「Get Started」ボタンをクリックし、先ほど作成したClaudeアカウントでサインインします。</p><ul><li>Googleアカウントで登録した方 →「Continue with Google」をクリック</li><li>メールで登録した方 → メールアドレスとパスワードを入力</li></ul></div>
+    <div class="instruction"><div class="instruction-num">2</div><h3>ログインする</h3><p>「Get Started」ボタンをクリックし、先ほど作成したClaudeアカウントでサインインします。</p><ul><li>Googleアカウントで登録した方 →「Continue with Google」をクリック</li><li>メールで登録した方 → メールアドレスを入力して「<strong>Continue with email</strong>」をクリック</li></ul>
+    <div class="callout info"><span class="callout-icon">💡</span><div><strong>パスワードは使いません。</strong>メールで登録した場合、<strong>ログイン用のリンクがメールで届く</strong>ので、それをクリックすればログインできます（別の端末で開いた場合は、表示される確認コードを入力します）。「パスワード入力欄が無い！」と焦らなくて大丈夫です。</div></div></div>
     ${imgSlot('login','ログイン後のチャット画面')}
-    <div class="instruction"><div class="instruction-num">3</div><h3>アプリの構造を確認</h3><p>アプリの<strong>左上</strong>に<strong>3つのタブ</strong>があります（左から <strong>Chat / Cowork / Code</strong>）：</p>
+    <div class="instruction"><div class="instruction-num">3</div><h3>アプリの構造を確認</h3><p>画面の<strong>左上</strong>に<strong>2つのタブ</strong>があります（<strong>ホーム / Code</strong>）：</p>
     ${tabVis('')}
-    <ul><li><strong>Chat</strong> ─ 通常のAIチャット（ブラウザ版と同じ機能）</li><li><strong>Cowork</strong> ─ AIが自律的にタスクをこなしてくれるエージェント</li><li><strong>Code</strong> ─ AIがファイルを直接編集してくれる開発ツール</li></ul></div>
+    <ul><li><strong>ホーム</strong> ─ AIとの会話（Chat）や、作業のおまかせ（Cowork）をするところ</li><li><strong>Code</strong> ─ AIがあなたのPCのファイルを直接編集してくれる開発ツール</li></ul></div>
     ${imgSlot('tabs','タブの切り替え位置')}
-    <div class="callout info"><span class="callout-icon">💡</span><div>3つの機能が1つのアプリに入っています。タブを切り替えるだけで使い分けられます。</div></div>`});
+    <div class="callout info"><span class="callout-icon">💡</span><div>アップデートで画面構成が変わりました。以前は「Chat / Cowork / Code」の3タブでしたが、現在は<strong>ChatとCoworkが「ホーム」にまとまり、2タブ</strong>になっています。</div></div>`});
 
   /* 5: Cowork タブ */
   if(wantCowork){
-    steps.push({badge:`STEP ${n++} ─ Cowork`,title:'Coworkタブを開いて使ってみよう',desc:'Claudeがあなたの代わりにタスクを自律的にこなしてくれる機能です。',content:`
-      <div class="instruction"><div class="instruction-num">1</div><h3>「Cowork」タブをクリック</h3><p>アプリ左上の<strong>Cowork</strong>アイコンをクリックします。</p>${tabVis('Cowork')}</div>
+    steps.push({badge:`STEP ${n++} ─ Cowork`,title:'おまかせ作業（Cowork）を使ってみよう',desc:'Claudeがあなたの代わりにタスクを自律的にこなしてくれる機能です。',content:`
+      <div class="instruction"><div class="instruction-num">1</div><h3>「ホーム」タブを開く</h3><p>アプリ左上の<strong>ホーム</strong>タブをクリックします。</p>${tabVis('ホーム')}
+      <div class="callout info"><span class="callout-icon">💡</span><div>以前は「Cowork」という専用タブがありましたが、アップデートで<strong>「ホーム」にまとまりました</strong>。やってほしい作業をそのまま書けば、Claudeが自分で進めてくれます。</div></div></div>
       ${imgSlot('cowork-tab','Coworkタブを開いた画面')}
       <div class="instruction"><div class="instruction-num">2</div><h3>自然言語でタスクを入力してみよう</h3><p>中央の入力欄に、やりたいことを日本語でそのまま入力します。例：</p><div class="code-block"><code>デスクトップにあるファイルを種類ごとにフォルダ分けしてください</code><button class="copy-btn" onclick="copyCode(this)">コピー</button></div></div>
       <div class="instruction"><div class="instruction-num">3</div><h3>フォルダへのアクセスを許可する</h3><p>Claudeがタスクを進める途中で、作業に必要なフォルダへのアクセス許可を求められます。内容を確認して「<strong>許可</strong>」をクリックすると作業が続行します。</p></div>
@@ -258,7 +260,8 @@ function buildSteps(){
       <div class="callout tip"><span class="callout-icon">✅</span><div>10個以上の選択画面が出ますが、全部デフォルトのまま進めてOKです。</div></div>
       <div class="instruction"><div class="instruction-num">4</div><h3>Claudeアプリを再起動する</h3><p>Gitのインストール後、<strong>Claudeアプリを一度閉じて、もう一度開いてください</strong>。これでCodeタブがGitを認識します。</p></div>
     `:`
-      <div class="instruction"><div class="instruction-num">1</div><h3>Gitをインストールする</h3><p>「ターミナル」を開きます。⌘（コマンド）+ スペースキーを同時に押すとSpotlight検索が開くので、「<strong>ターミナル</strong>」と入力してクリックしてください。</p></div>
+      <div class="callout info"><span class="callout-icon">💡</span><div><strong>Macはほとんどの場合、最初からGitが入っています。</strong>まずは下の手順3の確認コマンドだけ試して、バージョンが表示されたらインストールは不要です（そのまま次のステップへ進んでOK）。</div></div>
+      <div class="instruction"><div class="instruction-num">1</div><h3>ターミナルを開く</h3><p>「ターミナル」を開きます。⌘（コマンド）+ スペースキーを同時に押すとSpotlight検索が開くので、「<strong>ターミナル</strong>」と入力してクリックしてください。</p></div>
       ${imgSlot('terminal-open','ターミナルの開き方')}
       <div class="instruction"><div class="instruction-num">2</div><h3>インストールコマンドを実行</h3><p>ターミナルが開いたら、以下を入力してEnterを押してください：</p><div class="code-block"><code>xcode-select --install</code><button class="copy-btn" onclick="copyCode(this)">コピー</button></div><p>ポップアップが表示されたら「<strong>インストール</strong>」をクリックしてください。自動的にGitがインストールされます。</p></div>
       ${imgSlot('git-install-cmd','ターミナルでxcode-select --installを実行')}
@@ -281,6 +284,7 @@ function buildSteps(){
       <div class="instruction"><div class="instruction-num">4</div><h3>実行内容を確認して許可する</h3><p>Claudeが実行しようとするコマンドを表示します。内容を確認して「<strong>一度だけ許可</strong>」または「<strong>常に許可</strong>」をクリックすると、実際にファイルが操作されます。</p></div>
       ${imgSlot('code-example','実行内容の確認と許可画面')}
       <div class="callout tip"><span class="callout-icon">🎉</span><div><strong>Codeタブが使えるようになりました！</strong><br>あなたが許可するまで実際のファイルには反映されないので、安心して試してください。</div></div>
+      <div class="callout info"><span class="callout-icon">💡</span><div><strong>「許可の仕方」は入力欄のそばで切り替えられます。</strong>現在は <strong>Manual</strong>（毎回たずねる）/ <strong>Accept edits</strong>（ファイル編集は自動でOK）/ <strong>Plan</strong>（まず計画だけ立てる）/ <strong>Auto</strong> / <strong>Bypass permissions</strong>（確認なし）の5種類があります。<br><strong>慣れるまでは Manual のままが安心です。</strong>（以前は「Ask permissions／Auto accept edits／Plan mode」という名前でした）</div></div>
       <div class="callout warn"><span class="callout-icon">⚠️</span><div><strong>うまく動かない場合：</strong><br>・Gitがインストールされているか確認（前のステップ参照）<br>・Claudeアプリを最新版に更新する<br>・アプリを一度閉じて開き直す</div></div>`});
   }
 
@@ -294,18 +298,19 @@ function buildSteps(){
 
     <div class="instruction"><div class="instruction-num">2</div><h3>プライバシー設定</h3><p>設定 > プライバシー を開いてください。</p>
       <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>ロケーションメタデータ → <strong>オフ</strong></span></div>
-      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>Claudeの改善にご協力ください → <strong>オフ</strong></span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>AIモデルの改善にご協力ください → <strong>オフ</strong></span></div>
       <p style="font-size:13px;color:var(--text-dim);">※ オンのままだと会話が学習に使われる可能性があります。</p>
     </div>
-    ${imgDirect('setting-privacy2.jpg?v=2','プライバシー設定画面')}
+    ${imgDirect('setting-privacy2.jpg?v=3','プライバシー設定画面')}
 
-    <div class="instruction"><div class="instruction-num">3</div><h3>コード実行とファイル作成</h3><p>設定 > 機能 を開いてください。「コード実行とファイル作成」セクションを確認します。</p>
+    <div class="instruction"><div class="instruction-num">3</div><h3>コード実行とファイル作成</h3><p>設定 > <strong>機能</strong> を開いてください。「コード実行とファイル作成」セクションを確認します。</p>
       <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>クラウドコード実行とファイル作成 → <strong>オン</strong>（オフだとClaude Codeが機能しません）</span></div>
       <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>ネットワーク外部通信を許可 → <strong>オフ</strong>（データ漏洩リスク防止）</span></div>
+      <div class="callout info"><span class="callout-icon">💡</span><div>アップデートでメニュー名が変わることがあります。「機能」が見当たらない時は「<strong>Capabilities</strong>」、「コード実行とファイル作成（Code execution and file creation）」という表記も探してみてください。</div></div>
     </div>
     ${imgDirect('setting-code.jpg?v=2','コード実行とファイル作成の設定画面')}
 
-    <div class="instruction"><div class="instruction-num">4</div><h3>Claude in Chrome（コネクタ）</h3><p>設定 > コネクタ →「<strong>Claude in Chrome</strong>」を開いてください。</p>
+    <div class="instruction"><div class="instruction-num">4</div><h3>Claude in Chrome（コネクタ）</h3><p>設定 > <strong>カスタマイズ > コネクタ</strong> →「<strong>Claude in Chrome</strong>」を開いてください。<br><span style="font-size:13px;color:var(--text-dim);">※ 以前は「設定 > コネクタ」でしたが、現在は左メニュー下側の「カスタマイズ」の中に移動しています。</span></p>
       <div class="check-item" onclick="toggleCheck(this)"><span class="check-box"></span><span>Claude in Chrome → <strong>有効</strong></span></div>
       <p style="font-size:13px;color:var(--text-dim);">Chrome拡張機能経由でブラウザ操作を指示できます。サイト別の権限も管理できて安全です。</p>
     </div>
