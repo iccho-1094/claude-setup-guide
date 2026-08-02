@@ -293,7 +293,17 @@ function buildSteps(){
       <div class="instruction"><div class="instruction-num">4</div><h3>実行内容を確認して許可する</h3><p>Claudeが実行しようとするコマンドを表示します。内容を確認して「<strong>一度だけ許可</strong>」または「<strong>常に許可</strong>」をクリックすると、実際にファイルが操作されます。</p></div>
       ${imgSlot('code-example','実行内容の確認と許可画面')}
       <div class="callout tip"><span class="callout-icon">🎉</span><div><strong>Codeタブが使えるようになりました！</strong><br>あなたが許可するまで実際のファイルには反映されないので、安心して試してください。</div></div>
-      <div class="callout info"><span class="callout-icon">💡</span><div><strong>「許可の仕方」は入力欄のそばで切り替えられます。</strong>現在は <strong>Manual</strong>（毎回たずねる）/ <strong>Accept edits</strong>（ファイル編集は自動でOK）/ <strong>Plan</strong>（まず計画だけ立てる）/ <strong>Auto</strong> / <strong>Bypass permissions</strong>（確認なし）の5種類があります。<br><strong>慣れるまでは Manual のままが安心です。</strong>（以前は「Ask permissions／Auto accept edits／Plan mode」という名前でした）</div></div>
+      <div class="callout info"><span class="callout-icon">💡</span><div><strong>「許可の仕方」は入力欄のそばで切り替えられます。</strong>入力欄の左下にあるボタン（下の図の「手動」）を押すと、5種類のモードが出てきます。<br><strong>慣れるまでは「手動」のままが安心です。</strong></div></div>
+      ${imgDirect('code-modes.jpg?v=1','許可モードの切り替え（5種類）')}
+      <div class="instruction"><div class="instruction-num">5</div><h3>5つのモードの意味</h3>
+        <ul>
+          <li><strong>手動</strong> ─ 実行のたびに「いいですか？」と確認してくれる（<strong>最初はこれ</strong>）</li>
+          <li><strong>編集を受け入れる</strong> ─ ファイルの編集だけは確認なしで進む</li>
+          <li><strong>プラン</strong> ─ すぐ実行せず、まず「何をするか」の計画を立てて見せてくれる</li>
+          <li><strong>自動</strong> ─ Claudeが判断して進める</li>
+          <li><strong>権限をバイパス</strong> ─ 確認なしで何でも実行する（<strong>慣れるまで使わない</strong>）</li>
+        </ul>
+      </div>
       <div class="callout warn"><span class="callout-icon">⚠️</span><div><strong>うまく動かない場合：</strong><br>・Gitがインストールされているか確認（前のステップ参照）<br>・Claudeアプリを最新版に更新する<br>・アプリを一度閉じて開き直す</div></div>`});
   }
 
