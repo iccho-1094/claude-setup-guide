@@ -170,7 +170,8 @@ const imgMap = {
   'code-local': '11.jpg?v=2',
   'cowork-tab': '8.jpg?v=3',
   'cowork-proceed': '9.jpg?v=2',
-  'install-win': 'install-win.jpg'
+  'install-win': 'install-win.jpg',
+  'git-win': 'git-win.jpg?v=1'
 };
 function imgSlot(id, label){
   if(imgMap[id]){
@@ -264,7 +265,7 @@ function buildSteps(){
       <div class="instruction"><div class="instruction-num">1</div><h3>ダウンロードページを開く</h3><p>以下のリンクを開いてください：</p><p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git for Windows ダウンロードページ ↗</a></p></div>
       <div class="instruction"><div class="instruction-num">2</div><h3>ダウンロードして実行</h3><p>「Click here to download」をクリックして、ダウンロードされたファイルを開きます。</p></div>
       <div class="instruction"><div class="instruction-num">3</div><h3>インストール</h3><p>設定画面が<strong>何度も</strong>表示されますが、<strong>すべてそのまま「Next」→「Next」→...→「Install」</strong>で大丈夫です。</p></div>
-      ${imgSlot('git-win','Gitインストール画面（Next連打でOK）')}
+      ${imgSlot('git-win','Gitインストール画面のイメージ（Next連打でOK）')}
       <div class="callout tip"><span class="callout-icon">✅</span><div>10個以上の選択画面が出ますが、全部デフォルトのまま進めてOKです。</div></div>
       <div class="instruction"><div class="instruction-num">4</div><h3>Claudeアプリを再起動する</h3><p>Gitのインストール後、<strong>Claudeアプリを一度閉じて、もう一度開いてください</strong>。これでCodeタブがGitを認識します。</p></div>
     `:`
