@@ -2,3 +2,8 @@
 # 親リポジトリ claude-code-dev(Private)の docs-private/claude-setup-guide/ で管理している。
 # 万一このフォルダ内に docs/ を作っても公開されないよう、ガードとして除外しておく。
 docs/
+
+# デモ動画はリポジトリに含めない（Public・容量が大きいため）
+# 完成品は apps/claude-setup-guide/assets/videos/demo.mp4 にローカル保管し、
+# 公開用は AICTool サイト（icchooo/AICTool の public/videos/）に集約する運用
+assets/videos/
